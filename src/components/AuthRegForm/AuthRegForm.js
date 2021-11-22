@@ -17,7 +17,6 @@ function AuthRegForm(props) {
             <h2 className="authRegForm__title">{props.formText}</h2>
             {props.children}
             <button
-                onSubmit={props.onSubmit}
                 type="submit"
                 className={`authRegForm__submit
                             ${!props.validButton && "ssubmit-invalid"}`}

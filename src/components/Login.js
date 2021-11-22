@@ -31,6 +31,7 @@ function LogIn(props) {
                     <input
                         type="email"
                         onChange={handleChange}
+                        value={inputName.logInEmail}
                         className="authRegForm__field"
                         placeholder="Email"
                         name="logInEmail"
@@ -43,6 +44,7 @@ function LogIn(props) {
                         {/* {props.validity.message.editName} */}
                     </span>
                     <input
+                        value={inputName.logInPassword}
                         type="password"
                         onChange={handleChange}
                         className="authRegForm__field"

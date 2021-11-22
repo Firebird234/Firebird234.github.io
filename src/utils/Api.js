@@ -114,58 +114,58 @@ export class Api {
         return Promise.reject(`Ошибка ${res.status}`);
     }
 
-    registration(link, data) {
-        return fetch(`${link}/signup`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                password: data.registerPassword,
-                email: data.registerEmail,
-            }),
-        })
-            .then((res) => {
-                return res;
-            })
-            .then(this._checkResponse);
-    }
+    // registration(link, data) {
+    //     return fetch(`${link}/signup`, {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({
+    //             password: data.registerPassword,
+    //             email: data.registerEmail,
+    //         }),
+    //     })
+    //         .then((res) => {
+    //             return res;
+    //         })
+    //         .then(this._checkResponse);
+    // }
 
-    authorization(link, data) {
-        return fetch(`${link}/signin`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                password: data.logInPassword,
-                email: data.logInEmail,
-            }),
-        })
-            .then((res) => {
-                console.log(res);
-                return res;
-            })
-            .then((res) => {
-                if (res.token) {
-                    localStorage.setItem("token", res.token);
-                    return res;
-                } else {
-                    return res;
-                }
-            })
-            .then(this._checkResponse);
-    }
+    // authorization(link, data) {
+    //     return fetch(`${link}/signin`, {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({
+    //             password: data.logInPassword,
+    //             email: data.logInEmail,
+    //         }),
+    //     })
+    //         .then((res) => {
+    //             console.log(res);
+    //             return res;
+    //         })
+    //         .then((res) => {
+    //             if (res.token) {
+    //                 localStorage.setItem("token", res.token);
+    //                 return res;
+    //             } else {
+    //                 return res;
+    //             }
+    //         })
+    //         .then(this._checkResponse);
+    // }
 
-    checkToken(link, token) {
-        return fetch(`${link}/users/me`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-        })
-            .then((res) => {
-                return res;
-            })
-            .then(this._checkResponse);
-    }
+    // checkToken(link, token) {
+    //     return fetch(`${link}/users/me`, {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Authorization: `Bearer ${token}`,
+    //         },
+    //     })
+    //         .then((res) => {
+    //             return res;
+    //         })
+    //         .then(this._checkResponse);
+    // }
 }
 
 const sendRequest = new Api("https://mesto.nomoreparties.co/v1/cohort-28/", {

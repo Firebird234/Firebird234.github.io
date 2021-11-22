@@ -2,11 +2,14 @@ import React from "react";
 
 function ImagePopup(props) {
     function handleOverlay(e) {
-        const popups = Array.from(document.querySelectorAll(".popup"));
-        e.stopPropagation();
-        popups.forEach((el) => {
-            e.target === el && props.onClose();
-        });
+        // const popups = Array.from(document.querySelectorAll(".popup"));
+        // e.stopPropagation();
+        // popups.forEach((el) => {
+        //     e.target === el && props.onClose();
+        // });
+        if (e.target === e.currentTarget) {
+            props.onClose();
+        }
     }
 
     return (

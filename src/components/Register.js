@@ -31,6 +31,7 @@ function Register(props) {
             children={
                 <>
                     <input
+                        value={inputName.registerEmail}
                         type="email"
                         onChange={handleChange}
                         className="authRegForm__field"
@@ -45,6 +46,7 @@ function Register(props) {
                         {/* {props.validity.message.editName} */}
                     </span>
                     <input
+                        value={inputName.registerPassword}
                         type="password"
                         onChange={handleChange}
                         className="authRegForm__field"

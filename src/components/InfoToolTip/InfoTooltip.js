@@ -5,13 +5,6 @@ import fail from "../../images/Union-Err.png";
 import "../InfoToolTip/InfoTooltip.css";
 
 function InfoTooltip(props) {
-    React.useEffect(() => {
-        document.addEventListener("keydown", props.handleEsc);
-
-        return () => {
-            document.removeEventListener("keydown", props.handleEsc);
-        };
-    }, []);
     return (
         <article
             // onMouseUp={this.handleOverlay}
@@ -21,6 +14,11 @@ function InfoTooltip(props) {
                 <img
                     className="popup__image"
                     src={props.success ? success : fail}
+                    alt={
+                        props.success
+                            ? "Вы зарегистрировались"
+                            : "Что то пошло не так"
+                    }
                 />
                 <h3 className="popup__text">
                     {props.success

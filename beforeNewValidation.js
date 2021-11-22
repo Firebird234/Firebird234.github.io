@@ -58,6 +58,47 @@ function App() {
     const [loaderAva, setLoaderAva] = React.useState(false);
     //ИКОНКА ЗАГРУЗКИ___________________________________________________
 
+    //ВАЛИДАЦИЯ---------------------------------------------------------
+    const [validity, setValidity] = React.useState({
+        isValid: {
+            editName: true,
+            editDescription: true,
+            addName: false,
+            addLink: false,
+            avaLink: false,
+        },
+        message: {},
+    });
+
+    function handleValidity(input) {
+        if (input.validity.valid === true) {
+            setValidity({
+                // ...validity,
+                isValid: { ...validity.isValid, [input.name]: true },
+                message: { ...validity.message, [input.name]: "" },
+            });
+        } else if (input.validity.valueMissing === true) {
+            setValidity({
+                // ...validity,
+                isValid: { ...validity.isValid, [input.name]: false },
+                message: {
+                    ...validity.message,
+                    [input.name]: "Будь котиком, заполни пустое поле",
+                },
+            });
+        } else if (input.validity.valid === false) {
+            setValidity({
+                // ...validity,
+                isValid: { ...validity.isValid, [input.name]: false },
+                message: {
+                    ...validity.message,
+                    [input.name]: input.validationMessage,
+                },
+            });
+        }
+    }
+    //ВАЛИДАЦИЯ_________________________________________________________
+
     React.useEffect(() => {
         Api.getUserData()
             .then((data) => {
@@ -349,6 +390,8 @@ function App() {
                                     onCardDelete={handleDeleteClick}
                                 />
                                 <EditProfilePopup
+                                    validity={validity}
+                                    handleValidity={handleValidity}
                                     handleEsc={handleEsc}
                                     loader={loaderEdit}
                                     onUpdateUser={handleUpdateUser}
@@ -356,6 +399,8 @@ function App() {
                                     onClose={closeAllPopups}
                                 />
                                 <EditAvatarPopup
+                                    validity={validity}
+                                    handleValidity={handleValidity}
                                     handleEsc={handleEsc}
                                     loader={loaderAva}
                                     onUpdateUser={handleUpdatAvatar}
@@ -363,6 +408,8 @@ function App() {
                                     onClose={closeAllPopups}
                                 />
                                 <AddPlacePopup
+                                    validity={validity}
+                                    handleValidity={handleValidity}
                                     handleEsc={handleEsc}
                                     loader={loaderAdd}
                                     onAddCard={handleAddPlaceSubmit}
