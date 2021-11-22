@@ -97,13 +97,12 @@ function App() {
         setSelectedCard({});
     }
 
-    function handleEsc(event) {
-        if (event.key === `Escape`) {
-            closeAllPopups();
-        }
-    }
-
     React.useEffect(() => {
+        function handleEsc(event) {
+            if (event.key === `Escape`) {
+                closeAllPopups();
+            }
+        }
         document.addEventListener("keydown", handleEsc);
 
         return () => {
@@ -117,15 +116,14 @@ function App() {
             .then((data) => {
                 setCurrentUser(data);
             })
-            // .then(() => {
-            //     closeAllPopups();
-            // })
+            .then(() => {
+                closeAllPopups();
+            })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 setLoaderEdit(false);
-                closeAllPopups();
             });
     }
 
@@ -136,11 +134,13 @@ function App() {
                 setCurrentUser(data);
             })
             .then(() => {
-                setLoaderAva(false);
                 closeAllPopups();
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                setLoaderEdit(false);
             });
     }
 
@@ -151,11 +151,13 @@ function App() {
                 setCards([data, ...cards]);
             })
             .then(() => {
-                setLoaderAdd(false);
                 closeAllPopups();
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                setLoaderEdit(false);
             });
     }
 
@@ -349,21 +351,18 @@ function App() {
                                     onCardDelete={handleDeleteClick}
                                 />
                                 <EditProfilePopup
-                                    handleEsc={handleEsc}
                                     loader={loaderEdit}
                                     onUpdateUser={handleUpdateUser}
                                     isOpen={isEditProfilePopupOpen}
                                     onClose={closeAllPopups}
                                 />
                                 <EditAvatarPopup
-                                    handleEsc={handleEsc}
                                     loader={loaderAva}
                                     onUpdateUser={handleUpdatAvatar}
                                     isOpen={isEditAvatarPopupOpen}
                                     onClose={closeAllPopups}
                                 />
                                 <AddPlacePopup
-                                    handleEsc={handleEsc}
                                     loader={loaderAdd}
                                     onAddCard={handleAddPlaceSubmit}
                                     isOpen={isAddPlacePopupOpen}

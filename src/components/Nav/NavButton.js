@@ -13,7 +13,7 @@ function NavButton(props) {
     return (
         <div className="nav">
             <input id="menu-toggle" type="checkbox" />
-            <label class="menu-btn" for="menu-toggle">
+            <label className="menu-btn" htmlFor="menu-toggle">
                 <span></span>
             </label>
             <div className="nav__container">

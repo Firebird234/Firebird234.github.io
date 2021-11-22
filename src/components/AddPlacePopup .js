@@ -36,7 +36,7 @@ function AddPlacePopup(props) {
                         minLength="2"
                         maxLength="30"
                         required
-                        value={values.addName}
+                        value={values.addName || ""}
                     />
                     <span className="error" id="place-error">
                         {errors.addName}
@@ -49,7 +49,7 @@ function AddPlacePopup(props) {
                         name="addLink"
                         id="link"
                         required
-                        value={values.addLink}
+                        value={values.addLink || ""}
                     />
                     <span className="error" id="link-error">
                         {errors.addLink}

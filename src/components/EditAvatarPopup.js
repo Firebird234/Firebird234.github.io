@@ -14,7 +14,7 @@ function EditAvatarPopup(props) {
     }
 
     React.useEffect(() => {
-        values.avaLink = "";
+        setValues({ avaLink: "" });
     }, [props.isOpen]);
 
     return (
@@ -29,7 +29,7 @@ function EditAvatarPopup(props) {
             children={
                 <>
                     <input
-                        value={values.avaLink}
+                        value={values.avaLink || ""}
                         onChange={handleChange}
                         type="url"
                         className="popup__field popup__field_type_link"

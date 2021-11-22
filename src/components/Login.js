@@ -4,19 +4,22 @@ import AuthRegForm from "./AuthRegForm/AuthRegForm";
 import "./AuthRegForm/AuthRegForm.css";
 
 function LogIn(props) {
-    const [inputName, setName] = React.useState({
+    const [inputValues, setInputValues] = React.useState({
         logInEmail: "",
         logInPassword: "",
     });
 
     const handleChange = (event) => {
-        setName({ ...inputName, [event.target.name]: event.target.value });
+        setInputValues({
+            ...inputValues,
+            [event.target.name]: event.target.value,
+        });
         // props.handleValidity(event.target);
     };
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.onSubmit(inputName);
+        props.onSubmit(inputValues);
     }
 
     return (
@@ -31,7 +34,7 @@ function LogIn(props) {
                     <input
                         type="email"
                         onChange={handleChange}
-                        value={inputName.logInEmail}
+                        value={inputValues.logInEmail || ""}
                         className="authRegForm__field"
                         placeholder="Email"
                         name="logInEmail"
@@ -44,7 +47,7 @@ function LogIn(props) {
                         {/* {props.validity.message.editName} */}
                     </span>
                     <input
-                        value={inputName.logInPassword}
+                        value={inputValues.logInPassword || ""}
                         type="password"
                         onChange={handleChange}
                         className="authRegForm__field"

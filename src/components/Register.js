@@ -4,20 +4,23 @@ import AuthRegForm from "./AuthRegForm/AuthRegForm";
 import "./AuthRegForm/AuthRegForm.css";
 
 function Register(props) {
-    const [inputName, setName] = React.useState({
+    const [inputValues, setInputValues] = React.useState({
         registerEmail: "",
         registerPassword: "",
     });
 
     const handleChange = (event) => {
-        setName({ ...inputName, [event.target.name]: event.target.value });
+        setInputValues({
+            ...inputValues,
+            [event.target.name]: event.target.value,
+        });
         // props.handleValidity(event.target);
-        console.log(inputName);
+        console.log(inputValues);
     };
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.onSubmit(inputName);
+        props.onSubmit(inputValues);
     }
 
     return (
@@ -31,7 +34,7 @@ function Register(props) {
             children={
                 <>
                     <input
-                        value={inputName.registerEmail}
+                        value={inputValues.registerEmail || ""}
                         type="email"
                         onChange={handleChange}
                         className="authRegForm__field"
@@ -46,7 +49,7 @@ function Register(props) {
                         {/* {props.validity.message.editName} */}
                     </span>
                     <input
-                        value={inputName.registerPassword}
+                        value={inputValues.registerPassword || ""}
                         type="password"
                         onChange={handleChange}
                         className="authRegForm__field"
