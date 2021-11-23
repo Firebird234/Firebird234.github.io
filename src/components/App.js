@@ -157,7 +157,7 @@ function App() {
                 console.log(err);
             })
             .finally(() => {
-                setLoaderEdit(false);
+                setLoaderAdd(false);
             });
     }
 
