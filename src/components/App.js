@@ -140,7 +140,7 @@ function App() {
                 console.log(err);
             })
             .finally(() => {
-                setLoaderEdit(false);
+                setLoaderAva(false);
             });
     }
 
@@ -208,6 +208,7 @@ function App() {
                 history("/sign-in");
                 setIsAuthPopupOpen(true);
                 setIsRegSucces(true);
+                console.log(regData);
                 // if (regData.data._id) {
                 //     setIsRegSucces(true);
                 // }
