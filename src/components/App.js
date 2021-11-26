@@ -1,11 +1,5 @@
 import React from "react";
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Link,
-    useNavigate,
-} from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import Main from "./Main";
 import Footer from "./Footer";
